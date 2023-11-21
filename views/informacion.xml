@@ -1,88 +1,177 @@
 <odoo>
-  <data>
+    <data>
+        <!-- explicit list view definition -->
 
-    <record model="ir.actions.act_window" id="informacion_list_action">
-      <field name="name">A acción de información</field>
-      <field name="res_model">odoo_basico.informacion</field>
-      <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="o_view_nocontent_smiling_face">Tes que crear o primeiro rexistro</p>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="informacion_form_view">
-      <field name="name">informacion.form</field>
-      <field name="model">odoo_basico.informacion</field>
-      <field name="arch" type="xml">
-        <form string="Formulario Informacion">
-          <sheet>
-            <group>
-              <field name="name"/>
-              <field name="descripcion"/>
-              <field name="alto_en_cms"/>
-              <field name="longo_en_cms"/>
-              <field name="ancho_en_cms"/>
-              <field name="peso"/>
-              <field name="autorizado"/>
-              <field name="sexo_traducido"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="informacion_treec5tr_view">
-      <field name="name">informacion.tree</field>
-      <field name="model">odoo_basico.informacion</field>
-      <field name="arch" type="xml">
-        <tree string="Formulario Informacion">
-              <field name="name"/>
-              <field name="descripcion"/>
-              <field name="alto_en_cms"/>
-              <field name="longo_en_cms"/>
-              <field name="ancho_en_cms"/>
-              <field name="peso"/>
-              <field name="autorizado"/>
-              <field name="sexo_traducido"/>
-        </tree>
-      </field>
-    </record>
-
-      <record model="ir.filters" id="filtroAutorizado">
-            <field name="name">Filtro informacion Autorizado</field>
-            <field name="model_id">odoo_basico.informacion</field>
-            <field name="context">{'group_by': ['autorizado']}</field>
-            <field name="is_default">true</field>
-            <field name="active">true</field>
-            <field name="sort">[]</field>
-            <field name="domain">[]</field><!-- Aquí iría o filtro -->
-            <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
-            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
-      </record>
-
-      <record model="ir.filters" id="filtroAutorizado">
-            <field name="name">Filtro informacion Autorizado</field>
-            <field name="model_id">odoo_basico.informacion</field>
-            <field name="context">{'group_by': ['autorizado']}</field>
-            <field name="is_default">true</field>
-            <field name="active">true</field>
-            <field name="sort">[]</field>
-            <field name="domain">[]</field><!-- Aquí iría o filtro -->
-            <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
-            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+        <record model="ir.actions.act_window" id="informacion_list_action">
+            <field name="name">A acción de ola mundo</field>
+            <field name="res_model">odoo_basico.informacion</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Tes que crear o primeiro rexistro</p>
+            </field>
         </record>
 
-      <record model="ir.filters" id="filtro2">
-            <field name="name">Filtro informacion 2</field>
+
+        <record model="ir.ui.view" id="informacion_form_view">
+            <field name="name">informacion.form</field>
+            <field name="model">odoo_basico.informacion</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Información">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Datos Texto">
+                                <group>
+                                    <field name="descripcion"/>
+                                    <field name="sexo_traducido"/>
+                                    <field name="autorizado"/>
+                                </group>
+                            </page>
+                            <page string="Datos Numéricos">
+                                <group>
+                                    <group>
+                                        <field name="literal" readonly="1"/>
+                                        <field name="alto_en_cms"/>
+                                        <field name="longo_en_cms"/>
+                                        <field name="ancho_en_cms"/>
+                                    </group>
+                                    <group>
+                                        <field name="peso"/>
+                                        <field name="volume"/>
+                                        <field name="densidade"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Binary">
+                                <group>
+                                </group>
+                            </page>
+                            <page string="Moedas">
+                                <group>
+                                </group>
+                            </page>
+                            <page string="Data e Hora">
+                                <group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="informacion_tree_view">
+            <field name="name">informacion.tree</field>
+            <field name="model">odoo_basico.informacion</field>
+            <field name="arch" type="xml">
+                <tree string="Formulario de Información">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                    <field name="sexo_traducido"/>
+                    <field name="peso"/>
+                    <field name="literal" readonly="1"/>
+                    <field name="alto_en_cms"/>
+                    <field name="longo_en_cms"/>
+                    <field name="ancho_en_cms"/>
+                    <field name="volume"/>
+                    <field name="densidade"/>
+                    <field name="autorizado"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="informacion_graph_view">
+            <field name="name">informacion.grafico</field>
+            <field name="model">odoo_basico.informacion</field>
+            <field name="arch" type="xml">
+                <graph string="densidades" type="bar">
+                    <field name="densidade" type="row"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.filters" id="filtroAutorizado">
+            <field name="name">Filtro informacion Autorizado</field>
             <field name="model_id">odoo_basico.informacion</field>
             <field name="context">{'group_by': ['autorizado']}</field>
-            <field name="is_default">true</field>
+            <field name="is_default">false</field>
             <field name="active">true</field>
             <field name="sort">[]</field>
-            <field name="domain">['|','&amp;',('autorizado', '=', False),('sexo_traducido', '=', 'Mujer'),('name', '=','Rexistro 3' )]</field><!-- Aquí iría o filtro -->
+            <field name="domain">[]</field><!-- Aquí iría o filtro -->
             <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
-            <field name="action_id" eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
-      </record>
+            <field name="action_id"
+                   eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+        </record>
 
-  </data>
+        <record model="ir.filters" id="filtroPorAuteSexo">
+            <field name="name">Filtro informacion Autorizado e Sexo</field>
+            <field name="model_id">odoo_basico.informacion</field>
+            <field name="context">{'group_by': ['autorizado']}</field>
+            <field name="is_default">false</field>
+            <field name="active">true</field>
+            <field name="sort">[]</field>
+            <field name="domain">['|','&amp;',('autorizado', '=', False),('sexo_traducido', '=',
+                'Mujer'),('name','=','Rexistro 3' )]
+            </field><!-- Aquí iría o filtro -->
+            <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
+            <field name="action_id"
+                   eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+        </record>
+
+
+        <record model="ir.filters" id="filtroAutePeso">
+            <field name="name">Filtro informacion Autorizado e Peso</field>
+            <field name="model_id">odoo_basico.informacion</field>
+            <field name="context">{'group_by': ['autorizado']}</field>
+            <field name="is_default">false</field>
+            <field name="active">true</field>
+            <field name="sort">[]</field>
+            <field name="domain">['|','&amp;',('autorizado', '=', True),('peso', '&gt;', '2.00'),('name',
+                '=','Rexistro3' )]
+            </field><!-- Aquí iría o filtro -->
+            <field name="user_id"></field><!-- En blanco para que esté dispoñible para todos os usuarios -->
+            <field name="action_id"
+                   eval="ref('odoo_basico.informacion_list_action')"/><!-- Obtemos o id a partir do id externo-->
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="odoo_basico.action_server">
+              <field name="name">odoo_basico server</field>
+              <field name="model_id" ref="model_odoo_basico_odoo_basico"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="odoo_basico" id="odoo_basico.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="odoo_basico.menu_1" parent="odoo_basico.menu_root"/>
+            <menuitem name="Menu 2" id="odoo_basico.menu_2" parent="odoo_basico.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="odoo_basico.menu_1_list" parent="odoo_basico.menu_1"
+                      action="odoo_basico.action_window"/>
+            <menuitem name="Server to list" id="odoo_basico" parent="odoo_basico.menu_2"
+                      action="odoo_basico.action_server"/>
+        -->
+    </data>
 </odoo>
