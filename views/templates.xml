@@ -1,5 +1,5 @@
 <odoo>
-    <data>
+    <data noupdate="1">
         <record model="odoo_basico.informacion" id="odoo_basicoinformacion1">
             <field name="name">Rexistro 1</field>
             <field name="descripcion">Descripción Rexistro 1</field>
@@ -39,7 +39,7 @@
             <field name="longo_en_cms">4</field>
             <field name="ancho_en_cms">4</field>
             <field name="peso">4</field>
-        </record>
+        </record>   <!-- Xoan Outeiro a22xoanmoj -->
         <record model="odoo_basico.informacion" id="odoo_basicoinformacion5">
             <field name="name">Rexistro 5</field>
             <field name="descripcion">Descripción Rexistro 5</field>

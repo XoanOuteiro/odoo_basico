@@ -22,6 +22,10 @@ class informacion(models.Model):
     literal = fields.Char(store=False)
     autorizado = fields.Boolean(default=True, string="¿Autorizado?")
 
+    foto = fields.Binary(string='Foto')
+    adxunto_nome = fields.Char(string="Nome Adxunto")
+    adxunto = fields.Binary(string="Arquivo adxunto")
+
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
         for rexistro in self:
