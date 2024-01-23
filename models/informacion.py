@@ -26,6 +26,16 @@ class informacion(models.Model):
     adxunto_nome = fields.Char(string="Nome Adxunto")
     adxunto = fields.Binary(string="Arquivo adxunto")
 
+    moeda_id = fields.Many2one('res.currency',domain="[('position','=','after')]")
+    moeda_euro_id = fields.Many2one('res.currency',
+                                    default=lambda self: self.env['res.currency'].search([('name', '=', "EUR")],
+                                                                                         limit=1))
+    gasto_en_euros = fields.Monetary("Gasto en Euros", 'moeda_euro_id')
+    moeda_en_texto = fields.Char(related="moeda_id.currency_unit_label",
+                                 string="Moeda en formato texto", store=True)
+    creador_da_moeda = fields.Char(related="moeda_id.create_uid.login",
+                                   string="Usuario creador da moeda", store=True)
+
     @api.depends('alto_en_cms', 'longo_en_cms', 'ancho_en_cms')
     def _volume(self):
         for rexistro in self:

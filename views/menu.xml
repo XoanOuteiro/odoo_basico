@@ -3,5 +3,6 @@
         <menuitem id="main_odoo_informacion" name="Menú nivel 0. Informacion"/>
         <menuitem id="menu_informacion" name="Menú Nivel 1. Informacion" parent="main_odoo_informacion" action="informacion_list_action"/>
         <menuitem id="menu_suceso" name="Menú Nivel 2. Suceso" parent="main_odoo_informacion" action="suceso_list_action"/>
+        <menuitem id="menu_pedido" name="Menú Nivel 2 Pedido" parent="main_odoo_informacion" action="pedido_list_action"/>
     </data>
 </odoo>

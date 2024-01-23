@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_odoo_informacion,odoo_basico.informacion,model_odoo_basico_informacion,base.group_user,1,1,1,1
 access_odoo_suceso,odoo_basico.suceso,model_odoo_basico_suceso,base.group_user,1,1,1,1
+access_odoo_pedido,odoo_basico.pedido,model_odoo_basico_pedido,base.group_user,1,1,1,1
+access_odoo_lineapedido,odoo_basico.lineapedido,model_odoo_basico_lineapedido,base.group_user,1,1,1,1
