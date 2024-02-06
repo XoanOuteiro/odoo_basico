@@ -18,10 +18,11 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="descripcion"/>
+                            <!-- se quixeramos que non se puideran editar en lineapedido usariamos -->
+                            <!-- <field name="lineapedidos_ids" readonly="1"/> -->
+                        </group>
                             <separator string="Visualizar e engadir"/>
                             <field name="lineapedido_ids"/>
-                        </group>
                     </sheet>
                 </form>
             </field>
@@ -33,11 +34,10 @@
             <field name="arch" type="xml">
                 <tree string="pedido Tree">
                     <field name="name"/>
-                    <field name="descripcion"/>
+                    <field name="lineapedido_ids"/>
                 </tree>
             </field>
         </record>
-        
 
     </data>
 </odoo>
