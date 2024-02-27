@@ -29,6 +29,8 @@
         'views/suceso.xml',
         'views/informacion.xml',
         'views/templates.xml',
+        'reports/report_informacion.xml',
+        'reports/report_header.xml',
         'views/menu.xml',
         'security/ir.model.access.csv',
     ],

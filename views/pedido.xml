@@ -15,14 +15,21 @@
             <field name="model">odoo_basico.pedido</field>
             <field name="arch" type="xml">
                 <form string="Formulario Pedido">
+                    <header>
+                        <button name="actualizadorSexo" type="object"
+                                string="Actualiza o campo Sexo do modelo información"/>
+                        <button name="creaRexistroInformacion" type="object" string="Crear un rexistro de info"/>
+                        <button name="actualizadorHoraTimezone" type="object"
+                                string="Actualiza Hora Timezone do Usuario en todos os rexistros do modelo información"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>
                             <!-- se quixeramos que non se puideran editar en lineapedido usariamos -->
                             <!-- <field name="lineapedidos_ids" readonly="1"/> -->
                         </group>
-                            <separator string="Visualizar e engadir"/>
-                            <field name="lineapedido_ids"/>
+                        <separator string="Visualizar e engadir"/>
+                        <field name="lineapedido_ids"/>
                     </sheet>
                 </form>
             </field>

@@ -13,3 +13,18 @@ class pedido(models.Model):
 
     # Os campos One2many Non se almacenan na BD
     lineapedido_ids = fields.One2many("odoo_basico.lineapedido", 'pedido_id')
+
+    def actualizadorSexo(self):
+        informacion_ids = self.env['odoo_basico.informacion'].search([('autorizado', '=', False)])
+        for rexistro in informacion_ids:
+            self.env['odoo_basico.informacion']._cambia_campo_sexo(rexistro)
+
+    def creaRexistroInformacion(self):
+        creado_id = self.env['odoo_basico.informacion'].create({'name': 'Creado dende pedido'})
+        creado_id.descripcion =  "Creado dende o modelo pedido"
+        creado_id.autorizado = False
+
+    def actualizadorHoraTimezone(self):
+        informacion_ids = self.env['odoo_basico.informacion'].search([])
+        for rexistro in informacion_ids:
+            self.env['odoo_basico.informacion'].actualiza_hora_timezone_usuario(rexistro)
