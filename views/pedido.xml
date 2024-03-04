@@ -25,6 +25,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+                            <field name="persoa_id"/>
                             <!-- se quixeramos que non se puideran editar en lineapedido usariamos -->
                             <!-- <field name="lineapedidos_ids" readonly="1"/> -->
                         </group>
