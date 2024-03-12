@@ -24,7 +24,6 @@
 
     # always loaded
     'data': [
-
         'views/persoa.xml',
         'views/pedido.xml',
         'views/lineapedido.xml',
@@ -34,6 +33,7 @@
         'reports/report_informacion.xml',
         'reports/report_header.xml',
         'accions_planificadas/accion_planificada.xml',
+        'security/xestion_usuarios.xml',
         'views/menu.xml',
         'security/ir.model.access.csv',
     ],
